@@ -1,0 +1,137 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.page {
+  animation: fadeIn 0.25s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-img {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.75),
+      rgba(255, 255, 255, 0.25)
+    ),
+    radial-gradient(
+      circle at 40% 35%,
+      #b47642 0 18%,
+      #8f532d 19% 34%,
+      #ffffff 35% 100%
+    );
+}
+
+.briefcase-img {
+  background: linear-gradient(to bottom, #fff 0%, #fff 68%, #f6f4f1 68% 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.briefcase-img::before {
+  content: "";
+  position: absolute;
+  width: 72%;
+  height: 43%;
+  left: 14%;
+  top: 34%;
+  border-radius: 10px 10px 6px 6px;
+  background: linear-gradient(135deg, #bd743c, #8d4d26);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.16);
+}
+
+.briefcase-img::after {
+  content: "";
+  position: absolute;
+  width: 26%;
+  height: 26%;
+  left: 37%;
+  top: 20%;
+  border: 12px solid #b96f38;
+  border-bottom: none;
+  border-radius: 60px 60px 0 0;
+}
+
+.wallet-img {
+  background:
+    linear-gradient(to bottom, #fff 0 24%, transparent 24%),
+    linear-gradient(
+      165deg,
+      transparent 0 34%,
+      #9b542c 35% 67%,
+      transparent 68%
+    ),
+    linear-gradient(15deg, transparent 0 31%, #b66b35 32% 70%, transparent 71%),
+    linear-gradient(to bottom, #ffffff, #f8f8f8);
+}
+
+.category-img {
+  background: linear-gradient(135deg, #c4c1bb, #aaa59e);
+}
+
+.drawer-open {
+  transform: translateX(0) !important;
+}
+
+.artisan-img {
+  background:
+    linear-gradient(90deg, rgba(34, 29, 25, 0.32), rgba(34, 29, 25, 0.08)),
+    radial-gradient(circle at 42% 45%, #5a4638 0 8%, transparent 9%),
+    linear-gradient(12deg, transparent 0 38%, #8a5534 39% 51%, transparent 52%),
+    linear-gradient(to bottom, #332b24 0 30%, #76563c 31% 68%, #3b2f26 69% 100%);
+  background-color: #5e4737;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+.pattern-img {
+  background-color: #6f442d;
+  background-image:
+    linear-gradient(
+      30deg,
+      rgba(255, 255, 255, 0.14) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(0, 0, 0, 0.24) 87.5%,
+      rgba(0, 0, 0, 0.24)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.12) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(0, 0, 0, 0.22) 87.5%,
+      rgba(0, 0, 0, 0.22)
+    ),
+    linear-gradient(
+      30deg,
+      rgba(255, 255, 255, 0.12) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(0, 0, 0, 0.22) 87.5%,
+      rgba(0, 0, 0, 0.22)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(0, 0, 0, 0.2) 87.5%,
+      rgba(0, 0, 0, 0.2)
+    );
+  background-position:
+    0 0,
+    0 0,
+    32px 32px,
+    32px 32px;
+  background-size: 64px 64px;
+}

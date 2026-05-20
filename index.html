@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WILLS | Leather Accessories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brown: {
+                50: "#f8f5f1",
+                100: "#eee7df",
+                200: "#d9c8b7",
+                300: "#b99673",
+                400: "#9a714c",
+                500: "#6b4a35",
+                600: "#583b2a",
+                700: "#3d2d24",
+                800: "#2c2621",
+                900: "#221d19",
+              },
+            },
+            fontFamily: {
+              serif: ["Georgia", "serif"],
+              sans: ["Inter", "Arial", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="./src/css/styles.css" />
+  </head>
+  <body class="bg-white text-brown-900 font-sans">
+    <header class="sticky top-0 z-50 bg-white border-b border-brown-100">
+      <nav
+        class="relative h-16 px-5 md:px-10 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-6">
+          <!-- Botón menú -->
+          <button id="menuBtn" class="p-2 -ml-2" aria-label="Abrir menú">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+
+          <!-- Nosotros -->
+          <a
+            href="#/about"
+            class="font-serif text-base font-semibold text-brown-700 hover:opacity-70 transition"
+          >
+            Nosotros
+          </a>
+
+          <!-- Centro de ayuda -->
+          <a
+            href="#/help"
+            class="font-serif text-base font-semibold text-brown-700 hover:opacity-70 transition"
+          >
+            Centro de ayuda
+          </a>
+        </div>
+
+        <a
+          href="#/"
+          class="absolute left-1/2 -translate-x-1/2 font-serif text-2xl font-bold tracking-widest text-brown-700"
+        >
+          WILLS
+        </a>
+
+        <div class="flex items-center gap-3">
+          <button id="searchBtn" class="p-2 hidden" aria-label="Buscar">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="11" cy="11" r="7"></circle>
+              <path stroke-linecap="round" d="m20 20-3.5-3.5"></path>
+            </svg>
+          </button>
+
+          <button id="userBtn" class="p-2" aria-label="Usuario">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="8" r="3.4"></circle>
+              <path
+                stroke-linecap="round"
+                d="M5 21c1.1-4 4-6 7-6s5.9 2 7 6"
+              ></path>
+            </svg>
+          </button>
+
+          <a href="#/cart" class="relative p-2" aria-label="Carrito">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M6 8h12l-1 12H7L6 8Z"
+              ></path>
+              <path stroke-linecap="round" d="M9 8a3 3 0 0 1 6 0"></path>
+            </svg>
+            <span
+              id="cartCount"
+              class="absolute -top-1 -right-1 min-w-5 h-5 px-1 rounded-full bg-[#c6a45d] text-white text-[11px] grid place-items-center"
+              >0</span
+            >
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <aside
+      id="drawer"
+      class="fixed inset-y-0 left-0 z-[60] w-72 bg-white shadow-2xl -translate-x-full transition-transform duration-300 overflow-y-auto"
+    >
+      <div
+        class="h-16 px-6 flex items-center justify-between border-b border-brown-100"
+      >
+        <span class="font-serif text-xl font-bold tracking-widest">WILLS</span>
+        <button id="closeDrawer" class="p-2" aria-label="Cerrar menú">
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-2">
+        <div id="accountDrawerLinks"></div>
+      </div>
+    </aside>
+
+    <div id="overlay" class="fixed inset-0 z-[55] bg-black/30 hidden"></div>
+
+    <div id="searchModal" class="fixed inset-0 z-[70] hidden bg-black/40 px-5">
+      <div class="max-w-xl mx-auto mt-28 bg-white p-6 rounded-sm shadow-xl">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-serif text-2xl font-bold text-brown-700">
+            Buscar productos
+          </h3>
+          <button id="closeSearch" class="p-2">
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"></path>
+            </svg>
+          </button>
+        </div>
+        <form id="searchForm" class="flex">
+          <input
+            id="searchInput"
+            class="w-full border border-brown-200 px-4 py-3 outline-none focus:border-brown-500"
+            placeholder="Buscar billeteras, bolsos, accesorios..."
+          />
+          <button class="bg-brown-600 text-white px-6 hover:bg-brown-700">
+            Buscar
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <main id="app"></main>
+
+    <footer class="bg-brown-900 text-white mt-16">
+      <div
+        class="max-w-7xl mx-auto px-6 md:px-10 py-14 grid grid-cols-1 md:grid-cols-4 gap-10"
+      >
+        <div>
+          <h3 class="font-serif text-xl font-bold tracking-widest mb-5">
+            WILLS
+          </h3>
+          <p class="text-white/50 leading-relaxed mb-4">
+            Accesorios premium de cuero peruano, elaborados con pasión y
+            excelencia por más de 20 años.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-serif font-bold mb-5">Tienda</h4>
+          <div class="space-y-3 text-white/50">
+            <a href="#/shop?category=Wallets" class="block hover:text-white"
+              >Carteras</a
+            >
+            <a href="#/shop?category=Bags" class="block hover:text-white"
+              >Bolsos</a
+            >
+            <a
+              href="#/shop?category=Messenger Bags"
+              class="block hover:text-white"
+              >Bolsos</a
+            >
+            <a href="#/shop?category=Accessories" class="block hover:text-white"
+              >Accesorios</a
+            >
+          </div>
+        </div>
+        <div>
+          <h4 class="font-serif font-bold mb-5">Atención al Cliente</h4>
+          <div class="space-y-3 text-white/50">
+            <a href="#/help" class="block hover:text-white">Centro de ayuda</a>
+            <a href="#/about" class="block hover:text-white">Nosotros</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-serif font-bold mb-5">Newsletter</h4>
+          <p class="text-white/50 mb-5">
+            Recibe novedades, ofertas exclusivas y lanzamientos.
+          </p>
+          <form id="newsletterForm" class="flex">
+            <input
+              class="w-full px-4 py-3 text-brown-900 outline-none"
+              placeholder="Enter your email"
+            />
+            <button class="bg-brown-500 px-5 hover:bg-brown-400">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto px-6 md:px-10 pb-9">
+        <div class="border-t border-white/10 pt-8 text-center text-white/40">
+          © 2024 Wills Accessories. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="./src/js/app.js"></script>
+  </body>
+</html>
